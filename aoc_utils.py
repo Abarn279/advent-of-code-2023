@@ -138,6 +138,12 @@ class Grid2d:
 
     def get_cardinal_neighbors(self, v):
         return [v + d for d in [Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0), Vector2(0, -1)] if v + d in self.__grid]
+    
+    def get_diagonal_neighbors(self, v):
+        return [v + d for d in [Vector2(1, 1), Vector2(1, -1), Vector2(-1, -1), Vector2(-1, 1)] if v + d in self.__grid]
+    
+    def get_all_neighbors(self, v):
+        return self.get_cardinal_neighbors(v) + self.get_diagonal_neighbors(v)
 
     def recompute_bounds(self):
         '''
